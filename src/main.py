@@ -5,7 +5,7 @@ from pykuwahara import kuwahara
 import cv2
 import numpy as np
 
-image_path = 'images/image.jpg'  # Replace with your image path
+image_path = 'images/paper.jpg'  # Replace with your image path
 image = cv2.imread(image_path)
 if image is None:
     raise ValueError("Image not found")
@@ -25,4 +25,4 @@ cv2.destroyAllWindows()
 
 
 # Save the filtered image
-cv2.imwrite('filtered_image.jpg', filtered_image)
+cv2.imwrite('result/filtered_image.jpg', filtered_image)

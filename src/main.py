@@ -1,26 +1,28 @@
 import cv2
 import numpy as np
 from pykuwahara import kuwahara
+from kuwahara_filter import generalized_kuwahara
 from dithering import ordered_dithering
 from dithering import quantization
 
-import cv2
-import numpy as np
 
-image_path = 'images/paper.jpg'  # Replace with your image path
+image_path = 'images/yt.jpg'  # Replace with your image path
 image = cv2.imread(image_path)
 if image is None:
     raise ValueError("Image not found")
 
 # resize the image
-image = cv2.resize(image, (1024, 1024))
+image = cv2.resize(image, (500, 500))
 
 
-filtered_image = quantization(image, 3)
+# filtered_image = quantization(image, 3)
 
-filtered_image = kuwahara(filtered_image, method='gaussian', radius=5)    
+filtered_image = kuwahara(image, method='gaussian', radius=5)    
 
-# filtered_image = ordered_dithering(filtered_image)
+# filtered_image = generalized_kuwahara(image, method='gaussian', radius=5)    
+
+
+filtered_image = ordered_dithering(filtered_image)
 
 
 # Display the original and filtered image
